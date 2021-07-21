@@ -9,6 +9,9 @@ struct CARD {
     int num;
 };
 
+//typedef - Rename struct
+//typedef struct CARD card;
+
 int main (void) {
     string f1[] = {"Spades", "Hearts", "Diamonds", "Clubbs"};
     int choice;
