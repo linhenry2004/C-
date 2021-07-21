@@ -1,4 +1,5 @@
 //How to allow a function return a 2D array
+//Arrays can be treated as a pointer, esecially when being returned in a function
 #include <iostream>
 using namespace std;
 int** TimesTable ();
