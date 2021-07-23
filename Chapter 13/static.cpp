@@ -35,5 +35,6 @@ int main(void) {
 }
 
 /*
+static variable: Declared only once, and same for the whole class
 ->: access a member function or member variable of an object through a pointer, as opposed to a regular variable or reference.
 */
