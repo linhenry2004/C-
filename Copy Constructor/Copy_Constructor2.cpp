@@ -69,3 +69,5 @@ int main() {
     cout << "End of main()\n\n";
     return 0;
 }
+
+//Deep copy: Copies instead of just the address. It copies the whole object to another new address
