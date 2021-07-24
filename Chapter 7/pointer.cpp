@@ -7,5 +7,5 @@ using namespace std;
 int main (void) {
     int a = 10;
     int *ptr = &a;
-    cout << a << ' ' << ptr << endl;
+    cout << a << endl << ptr << endl;
 }
