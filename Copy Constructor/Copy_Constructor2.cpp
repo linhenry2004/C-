@@ -8,6 +8,8 @@ class StringTest {
         static int strings_count;
     public: 
         StringTest(const char *s);
+        StringTest(const StringTest & st);
+        StringTest();
         ~StringTest();
 
         friend ostream & operator << (ostream & os, const StringTest & st);
@@ -20,10 +22,30 @@ StringTest::StringTest(const char *s) {
     str = new char[len + 1];
     strcpy(str, s);
     strings_count++;
+    cout << "Operating..." << endl;
+    cout << "#" << strings_count << ": \"" << str << "\" object created \n";
+}
+
+StringTest::StringTest() {
+    len = 4;
+    str = new char[30];
+    strcpy(str, "Baseball");
+    strings_count++;
+    cout << "Operating defaul..." << endl;
+    cout << "#" << strings_count << ": \"" << str << "\" default object created \n";
+}
+
+StringTest::StringTest(const StringTest & st) {
+    len = st.len;
+    str = new char[len + 1];
+    strings_count++;
+    strcpy(str, st.str);
+    cout << "Operating copied..." << endl;
     cout << "#" << strings_count << ": \"" << str << "\" object created \n";
 }
 
 StringTest::~StringTest() {
+    cout << "Operating function..." << endl;
     cout << "\"" << str << "\" object deleted, ";
     --strings_count;
     cout << strings_count << " left\n";
@@ -37,17 +59,13 @@ ostream & operator << (ostream & os, const StringTest & st) {
 
 int main() {
     StringTest str1("Tabletennis");
-
-    cout << "str1: " << str1 << endl;
-    cout << "***********************" << endl;
-
+    cout << "str1: " << str1 << endl << endl;
+    StringTest str2;
+    cout << "str2: " << str2 << endl << endl;
     cout << "Initialize one object to another:\n";
-    StringTest str2 = str1;
-    cout << "str2: " << str2 << endl;
 
-    cout << "End of main()\n";
-    cout << "***********************" << endl;
+    StringTest bright = str1;
+    cout << "bright: " << bright << endl << endl;
+    cout << "End of main()\n\n";
     return 0;
 }
-
-//Shallow Copy: They copy the address instead of creating a new address
