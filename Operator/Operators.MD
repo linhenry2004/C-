@@ -61,28 +61,28 @@
 
 **->\***
 
-**->**
+**->**: Used with pointers to access the class or struct variables
 
-**^=**
+**^=**: Bitwise Operators
 
-**&=**
+**&=**: Bitwise Operators
 
-**|=**
+**|=**: Bitwise Operators
 
-**<<**
+**<<**: Bitwise Operators
 
-**>>**
+**>>**: Bitwise Operators
 
-**<<=**
+**<<=**: Bitwise Operators
 
-**>>=**
+**>>=**: Bitwise Operators
 
 ## Cannot be overloaded: 
 
-**?:**
+**?:**: Ternary Conditional Operator
 
-**.**
+**.**: Accesses members of struct variables or class objects
 
 **.\***
 
-**::**
+**::**: Relational Operators
