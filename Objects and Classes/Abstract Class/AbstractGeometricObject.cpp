@@ -1,9 +1,9 @@
-#include <iostream>
 #include <string>
+#include <iostream>
 using namespace std;
 
 class GeometricObject {
-    public: 
+    protected: 
         GeometricObject() {
             color = "white";
             filled = false;
@@ -12,6 +12,7 @@ class GeometricObject {
             this->color = color;
             this->filled = filled;
         }
+    public: 
         string getColor() const {
             return color;
         }
@@ -27,6 +28,8 @@ class GeometricObject {
         string toString() const {
             return "Geometric object";
         }
+        virtual double getArea() const = 0;
+        virtual double getPerimeter() const = 0;
     private:
         string color;
         bool filled;
@@ -37,31 +40,35 @@ class Circle: public GeometricObject {
         Circle() {
             radius = 1;
         }
+        
         Circle(double radius) {
             setRadius(radius);
-        } 
+        }
+        
         Circle(double radius, const string& color, bool filled) {
             setRadius(radius);
             setColor(color);
             setFilled(filled);
         }
+        
         double getRadius() const {
             return radius;
         }
+        
         void setRadius(double radius) {
             this->radius = (radius >= 0) ? radius : 0;
         }
+
         double getArea() const {
             return radius * radius * 3.14159;
         }
+
         double getPerimeter() const {
             return 2 * radius * 3.14159;
         }
+
         double getDiameter() const {
             return 2 * radius;
-        }
-        string toString() const {
-            return "Circle object";
         }
     private: 
         double radius;
@@ -101,45 +108,31 @@ class Rectangle: public GeometricObject {
         double getPerimeter() const {
             return 2 * (width + height);
         }
-        string toString() const {
-            return "Rectangle object";
-        }
     private: 
         double width;
         double height;
 };
 
+bool equalArea(const GeometricObject& g1, const GeometricObject& g2) {
+    return g1.getArea() == g2.getArea();
+}
+
+void displayGeometricObject(const GeometricObject& g) {
+    cout << "The area is " << g.getArea() << endl;
+    cout << "The perimeter is " << g.getPerimeter() << endl;
+}
+
 int main() {
-    GeometricObject shape;
-    shape.setColor("red");
-    shape.setFilled(true);
-    cout << shape.toString() << endl 
-         << "Color: " << shape.getColor() 
-         << " Filled: " << (shape.isFilled() ? "true" : "false") 
-         << endl;
-
     Circle circle(5);
-    shape.setColor("black");
-    shape.setFilled(false);
-    cout << circle.toString() << endl 
-         << "Color: " << circle.getColor() 
-         << " Filled: " << (circle.isFilled() ? "true" : "false") 
-         << " Radius: " << circle.getRadius() 
-         << " Area: " << circle.getArea() 
-         << " Perimeter: " << circle.getPerimeter() 
-         << endl;
+    Rectangle rectangle(5, 3);
 
-    Rectangle rectangle(2, 3);
-    rectangle.setColor("Orange");
-    rectangle.setFilled(true);
-    cout << rectangle.toString() << endl
-         << "Color: " << rectangle.getColor() 
-         << " Filled: " << (rectangle.isFilled() ? "true" : "false") 
-         << " Width: " << rectangle.getWidth()
-         << " Height: " << rectangle.getHeight() 
-         << " Area: " << rectangle.getArea() 
-         << " Perimeter: " << rectangle.getPerimeter() 
-         << endl;
+    cout << "Circle info: " << endl;
+    displayGeometricObject(circle);
+
+    cout << "\nRectangle info: " << endl;
+    displayGeometricObject(rectangle);
+
+    cout << "\nThe two objects have the same area? " << (equalArea(circle, rectangle) ? "Yes" : "No") << endl;
 
     return 0;
 }
