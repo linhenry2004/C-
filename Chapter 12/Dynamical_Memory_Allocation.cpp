@@ -1,9 +1,9 @@
 /*
-New keyword: 
+new keyword: 
 pointer = new type
 pointer = new type[amount]
 
-delete 
+delete keyword: 
 delete pointer
 delete [] pointer
 */
