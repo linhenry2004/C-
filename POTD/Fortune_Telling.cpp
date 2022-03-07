@@ -5,14 +5,14 @@ using namespace std;
 
 int main()
 {
-    int numCases;
-    long a, sum, ans;
+    int numCases, a;
+    unsigned long sum, ans;
     cin >> numCases;
     string respond[numCases];
     for (int i = 0; i < numCases; i++)
     {
         cin >> a >> sum >> ans;
-        long x;
+        unsigned long x;
         for (int j = 0; j < a; j++)
         {
             cin >> x;

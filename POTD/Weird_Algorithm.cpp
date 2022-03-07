@@ -3,7 +3,7 @@
 #include <iostream>
 using namespace std;
 
-int algo(int num)
+int algo(unsigned long num)
 {
     if (num == 1)
     {
@@ -12,7 +12,7 @@ int algo(int num)
     }
     else
     {
-        cout << num << " -> ";
+        cout << num << " ";
     }
 
     if (num % 2 == 0)
@@ -27,8 +27,7 @@ int algo(int num)
 
 int main()
 {
-    int n;
-    cout << "Please insert a number: ";
+    unsigned long n;
     cin >> n;
     algo(n);
     return 0;

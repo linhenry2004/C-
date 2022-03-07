@@ -15,7 +15,7 @@ int main()
     int numTest;
     int x1, y1, x2, y2, x3, y3;
     cin >> numTest;
-    double array[numTest];
+    int array[numTest];
     for (int i = 0; i < numTest; i++)
     {
         cin >> x1 >> y1;
@@ -23,15 +23,19 @@ int main()
         cin >> x3 >> y3;
         if (parallel(y1, y2) && y3 < y1)
         {
-            array[i] = abs((double)x2 - x1);
+            array[i] = abs(x2 - x1);
         }
         else if (parallel(y1, y3) && y2 < y1)
         {
-            array[i] = abs((double)x3 - x1);
+            array[i] = abs(x3 - x1);
         }
         else if (parallel(y2, y3) && y1 < y2)
         {
-            array[i] = abs((double)x3 - x2);
+            array[i] = abs(x3 - x2);
+        }
+        else
+        {
+            array[i] = 0;
         }
     }
     for (int i = 0; i < numTest; i++)
