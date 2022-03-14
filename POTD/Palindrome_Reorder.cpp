@@ -26,7 +26,7 @@ int main () {
     string str, ans;
     cin >> str;
     bool isOdd = str.length() % 2 == 1;
-    vector <int> cnt(25, 0);
+    vector <int> cnt(26, 0);
     int asc;
     for (int i = 0; i < str.length(); i++) {
         asc = str[i] - 65;
