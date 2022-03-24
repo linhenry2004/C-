@@ -1,4 +1,3 @@
-#include <numeric>
 #include <vector>
 #include <algorithm>
 #include <iostream>
@@ -11,7 +10,9 @@ int main () {
     }
     int count = 0;
     vector<int> columns(8);
-    iota(columns.begin(), columns.end(), 0);
+    for (int i = 0; i < 8; i++) {
+        columns[i] = i;
+    }
     do {
         bool valid = true;
         for (int i = 0; i < 8; i++) {
