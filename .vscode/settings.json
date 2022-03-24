@@ -70,7 +70,8 @@
         "deque": "cpp",
         "stack": "cpp",
         "map": "cpp",
-        "queue": "cpp"
+        "queue": "cpp",
+        "numeric": "cpp"
     },
     "C_Cpp.errorSquiggles": "Disabled"
 }
