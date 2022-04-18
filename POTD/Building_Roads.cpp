@@ -1,19 +1,30 @@
 #include <iostream>
 #include <vector>
-#include <set>
+#include <queue>
 using namespace std;
 
 #define maxn 2e5 + 1
 
-vector <set<int>> g(maxn);
-vector <bool> vis(maxn);
-vector <int> lead;
+vector<vector<int>> g(maxn);
+vector<bool> vis(maxn);
+vector<int> lead;
 
-void dfs (int u) {
+void bfs (int u) {
+    queue<int> q;
+    q.push(u);
     vis[u] = true;
-    for (auto v : g[u]) {
-        if (!vis[v]) {
-            dfs(v);
+    while(true) {
+        int v = q.front();
+        q.pop();
+        for (auto t : g[v]) {
+            if (!vis[t]) {
+                q.push(t);
+                vis[t] = true;
+            }
+        }
+        
+        if (q.empty()) {
+            break;
         }
     }
 }
@@ -24,13 +35,13 @@ int main () {
     for (int i = 0; i < m; i++) {
         int a, b;
         cin >> a >> b;
-        g[a].insert(b);
-        g[b].insert(a);
+        g[a].push_back(b);
+        g[b].push_back(a);
     }
     for (int i = 1; i <= n; i++) {
         if (!vis[i]) {
             lead.push_back(i);
-            dfs(i);
+            bfs(i);
         }
     }
     cout << lead.size() - 1 << endl;

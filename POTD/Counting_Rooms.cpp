@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <queue>
 using namespace std;
 
 int n, m;
@@ -18,23 +19,39 @@ bool isValid (int x, int y) {
     return true;
 }
 
-void dfs (int x, int y) {
+void bfs (int x, int y) {
+    queue<pair<int, int>> q;
+    q.push({x, y});
     vis[x][y] = true;
 
-    if (isValid(x, y - 1)) {
-        dfs(x, y - 1);
-    }
+    while (true) {
+        int a = q.front().first;
+        int b = q.front().second;
+        q.pop();
 
-    if (isValid(x, y + 1)) {
-        dfs(x, y + 1);
-    }
+        if (isValid(a, b - 1)) {
+            q.push({a, b - 1});
+            vis[a][b - 1] = true;
+        }
 
-    if (isValid(x - 1, y)) {
-        dfs(x - 1, y);
-    }
+        if (isValid(a, b + 1)) {
+            q.push({a, b + 1});
+            vis[a][b + 1] = true;
+        }
 
-    if (isValid(x + 1, y)) {
-        dfs(x + 1, y);
+        if (isValid(a - 1, b)) {
+            q.push({a - 1, b});
+            vis[a - 1][b] = true;
+        }
+
+        if (isValid(a + 1, b)) {
+            q.push({a + 1, b});
+            vis[a + 1][b] = true;
+        }
+
+        if (q.empty()) {
+            break;
+        }
     }
 }
 
@@ -50,7 +67,7 @@ int main () {
     for (int i = 1; i <= n; i++) {
         for (int j = 1; j <= m; j++) {
             if (map[i][j] == '.' && vis[i][j] == false) {
-                dfs(i, j);
+                bfs(i, j);
                 cnt++;
             }
         }
