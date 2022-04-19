@@ -60,7 +60,7 @@ void bfs(int x, int y) {
             mov[a + 1][b] = 'D';
         }
 
-        if(q.empty()) {
+        if(q.empty() || map[a][b] == 'B') {
             break;
         }
     }
